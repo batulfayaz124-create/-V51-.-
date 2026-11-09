@@ -1,81 +1,24 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>نظام تحضير الطالبات</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f8f3fa;
-  text-align: center;
-  padding: 35px 15px;
-}
-.card {
-  background: white;
-  max-width: 420px;
-  margin: auto;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 3px 15px #ddd;
-}
-button {
-  background: #7854a8;
-  color: white;
-  border: 0;
-  border-radius: 12px;
-  padding: 15px;
-  font-size: 18px;
-  width: 100%;
-}
-#result {
-  margin-top: 20px;
-  line-height: 1.8;
-}
-</style>
-</head>
-<body>
+<p>
+  اضغطي على الزر لتحديد موقعك
+  وتسجيل حضورك.
+</p>
 
-<div class="card">
-  <h2>نظام تحضير الطالبات</h2>
-  <p>اضغطي على الزر للسماح بتحديد موقعك.</p>
+<p>
+  سيتم إرسال موقعك ووقت حضورك
+  إلى مسؤولة التحضير.
+</p>
 
-  <button onclick="getLocation()">
-    تحديد موقعي
-  </button>
+<button id="btn" onclick="register()">
+  تحديد موقعي وتسجيل الحضور
+</button>
 
-  <p id="result"></p>
-</div>
+<p id="result"></p>
 
-<script>
-function getLocation() {
-  const result = document.getElementById("result");
-  result.textContent = "جاري تحديد الموقع...";
-
-  if (!navigator.geolocation) {
-    result.textContent = "تحديد الموقع غير مدعوم";
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    function(position) {
-      result.textContent =
-        "تم تحديد الموقع بنجاح ✅ دقة الموقع: " +
-        Math.round(position.coords.accuracy) +
-        " متر";
-    },
-    function(error) {
-      result.textContent =
-        "تعذر تحديد الموقع: " + error.message;
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    }
-  );
-}
-</script>
-
-</body>
-</html>
+<input name="id" type="hidden">
+<input name="token" type="hidden">
+<input name="lat" type="hidden">
+<input name="lng" type="hidden">
+<input name="accuracy" type="hidden">
+<input name="consent" value="yes"
+       type="hidden">
+      
